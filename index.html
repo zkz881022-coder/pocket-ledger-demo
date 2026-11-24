@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#f5f1e8">
+  <title>口袋小账 · 记账演示</title>
+  <meta name="description" content="用合成账单试记一笔，检测此网页能否连通。">
+  <link rel="manifest" href="./manifest.webmanifest">
+  <link rel="icon" href="./icon-192.png" type="image/png">
+  <link rel="apple-touch-icon" href="./apple-touch-icon.png">
+  <link rel="stylesheet" href="./style.css">
+  <script src="./app.js" defer></script>
+</head>
+<body>
+  <header class="masthead wrap">
+    <a class="brand" href="./"><img src="./icon-192.png" width="36" height="36" alt="">口袋小账</a>
+    <a class="install-link" href="#install">添加到主屏幕 <span aria-hidden="true">↗</span></a>
+  </header>
+  <main class="wrap">
+    <section class="summary" aria-labelledby="summary-title">
+      <div class="summary-top">
+        <h1 id="summary-title">演示账单</h1>
+        <span class="sample-tag">合成数据</span>
+      </div>
+      <div class="total">
+        <p>累计支出</p>
+        <strong id="total">¥246.50</strong>
+      </div>
+      <p class="summary-note">可试记一笔。新增记录保存在此设备的浏览器中。</p>
+    </section>
+
+    <section class="network" aria-labelledby="network-title">
+      <div class="network-title">
+        <span class="signal" data-state="idle" aria-hidden="true"></span>
+        <h2 id="network-title">联网检测</h2>
+      </div>
+      <button class="button secondary" id="check-network" type="button">立即检测</button>
+      <p id="network-result" role="status">切换 VPN 后，可点「立即检测」重测本站。</p>
+    </section>
+
+    <section class="ledger" aria-labelledby="ledger-title">
+      <div class="section-top">
+        <div><h2 id="ledger-title">账单明细</h2><p id="entry-count">共 5 笔</p></div>
+        <button class="button primary" id="toggle-entry" type="button" aria-expanded="false" aria-controls="entry-form" hidden><span aria-hidden="true">＋</span> 记一笔</button>
+      </div>
+      <form id="entry-form" hidden>
+        <p class="form-note">仅供演示，请勿填写真实账单或个人信息。</p>
+        <div class="fields">
+          <label>项目<input name="title" maxlength="32" placeholder="例如：散步买咖啡" required></label>
+          <label>金额（元）<input name="amount" type="text" inputmode="decimal" maxlength="10" placeholder="0.00" required></label>
+        </div>
+        <label>分类<select name="category">
+          <option>餐饮</option><option>交通</option><option>日用</option><option>休闲</option><option>其他</option>
+        </select></label>
+        <div class="form-actions">
+          <button class="button secondary" id="cancel-entry" type="button">取消</button>
+          <button class="button primary" type="submit">保存演示记录</button>
+        </div>
+      </form>
+      <p id="entry-result" role="status" hidden></p>
+      <ol class="entries" id="entries">
+        <li><span class="category dining" aria-hidden="true">餐</span><div class="entry-copy"><strong>街角午餐</strong><span>餐饮 · 11月25日</span></div><strong class="amount">¥38.50</strong></li>
+        <li><span class="category travel" aria-hidden="true">行</span><div class="entry-copy"><strong>地铁往返</strong><span>交通 · 11月25日</span></div><strong class="amount">¥8.00</strong></li>
+        <li><span class="category daily" aria-hidden="true">用</span><div class="entry-copy"><strong>周末买菜</strong><span>日用 · 11月24日</span></div><strong class="amount">¥72.00</strong></li>
+        <li><span class="category leisure" aria-hidden="true">闲</span><div class="entry-copy"><strong>两张电影票</strong><span>休闲 · 11月23日</span></div><strong class="amount">¥96.00</strong></li>
+        <li><span class="category dining" aria-hidden="true">餐</span><div class="entry-copy"><strong>面包与咖啡</strong><span>餐饮 · 11月22日</span></div><strong class="amount">¥32.00</strong></li>
+      </ol>
+    </section>
+
+    <section class="install" id="install" aria-labelledby="install-title">
+      <h2 id="install-title">添加到主屏幕</h2>
+      <dl>
+        <div><dt>iPhone</dt><dd>在 Safari 打开，点「分享」→「添加到主屏幕」。</dd></div>
+        <div><dt>Android</dt><dd>在 Chrome 打开，点「⋮」→「添加到主屏幕」或「安装应用」。</dd></div>
+      </dl>
+      <button class="button secondary" id="install-app" type="button" hidden>安装口袋小账</button>
+    </section>
+    <noscript><p class="privacy">开启 JavaScript 后可试记账和检测联网。</p></noscript>
+    <footer class="privacy">所有示例均为虚构。新增记录不会上传，请勿填写真实账单。</footer>
+  </main>
+</body>
+</html>
